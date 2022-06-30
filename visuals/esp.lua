@@ -6,7 +6,7 @@ getgenv().phantoms = game.Workspace.Players['Bright blue']
 esp.Boxes = false
 esp.Names = false
 
-esp:AddObjectListener(ghosts, {
+getgenv().ghosts_esp = esp:AddObjectListener(ghosts, {
   Recursive = true,
   Type = "Model",
   CustomName = " ",
@@ -17,7 +17,7 @@ esp:AddObjectListener(ghosts, {
   IsEnabled = "ghosts"
 })
 
-esp:AddObjectListener(phantoms, {
+getgenv().phantoms_esp esp:AddObjectListener(phantoms, {
   Recursive = true,
   Type = "Model",
   CustomName = " ",
