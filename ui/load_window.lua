@@ -1,13 +1,15 @@
 local window = library:CreateWindow(
     {
         WindowName = "indigo - phantom forces",
-        Color = Color3.fromRGB(6,57,112),
+        Color = Color3.fromRGB(6, 57, 112),
     },
     game.CoreGui
 )
 
 local aimbot_tab = window:CreateTab("aimbot")
 local character_tab = window:CreateTab("character")
+local visuals_tab = window:CreateTab("visuals")
+
 do
     local fov_circle = Drawing.new("Circle")
     fov_circle.Thickness = 1
@@ -47,9 +49,10 @@ do
         config.aimbot.field_of_view_range = state
         fov_circle.Radius = state
     end)
-    fieldofview_sector:CreateColorpicker("color", function(state)
+    local colorpicker = fieldofview_sector:CreateColorpicker("color", function(state)
         fov_circle.Color = state
     end)
+    colorpicker:UpdateColor( Color3.fromRGB(6, 57, 112) )
     fieldofview_sector:CreateToggle("visible", false, function(state)
         fov_circle.Visible = state
     end)
@@ -102,5 +105,29 @@ do
         "stand"
     }, function(state)
         config.character.antiaim_stance = state
+    end)
+end
+
+do
+    local esp_sector = visuals_tab:CreateSection('esp')
+
+    esp_sector:CreateToggle("enabled", false, function(state)
+        esp:Toggle(state)
+    end)
+
+    esp_sector:CreateToggle("ghosts", false, function(state)
+        esp.ghosts = state 
+    end)
+    esp_sector:CreateToggle("phantoms", false, function(state)
+        esp.phantoms = state
+    end)
+    esp_sector:CreateToggle("boxes", false, function(state)
+        esp.Boxes = state
+    end)
+    esp_sector:CreateToggle("tracers", false, function(state)
+        esp.Tracers = state
+    end)
+    esp_sector:CreateToggle("distance", false, function(state)
+        esp.Names = state
     end)
 end
