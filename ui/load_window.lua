@@ -114,13 +114,14 @@ do
     esp_sector:CreateToggle("enabled", false, function(state)
         esp:Toggle(state)
     end)
-
+    local Label1 = Section1:CreateLabel(" ")
     esp_sector:CreateToggle("ghosts", false, function(state)
         esp.ghosts = state 
     end)
     esp_sector:CreateToggle("phantoms", false, function(state)
         esp.phantoms = state
     end)
+    local Label1 = Section1:CreateLabel(" ")
     esp_sector:CreateToggle("boxes", false, function(state)
         esp.Boxes = state
     end)
@@ -130,4 +131,19 @@ do
     esp_sector:CreateToggle("distance", false, function(state)
         esp.Names = state
     end)
+    local Label1 = Section1:CreateLabel(" ")
+    local colorpicker = fieldofview_sector:CreateColorpicker("ghosts color", function(state)
+        ghosts_esp.Components["Quad"].Color = state
+        ghosts_esp.Components["Name"].Color = state
+        ghosts_esp.Components["Tracer"].Color = state
+        ghosts_esp.Components["Distance"].Color = state
+    end)
+    colorpicker:UpdateColor( Color3.fromRGB(6, 57, 112) )
+    local colorpicker = fieldofview_sector:CreateColorpicker("phantoms color", function(state)
+        phantoms_esp.Components["Quad"].Color = state
+        phantoms_esp.Components["Name"].Color = state
+        phantoms_esp.Components["Tracer"].Color = state
+        phantoms_esp.Components["Distance"].Color = state
+    end)
+    colorpicker:UpdateColor( Color3.fromRGB(112, 66, 6) )
 end
