@@ -3,7 +3,7 @@ local script_details = {
     version = "1.0.0",
 }
 
-local url = script_details.debug and "https://raw.githubusercontent.com/3xq/indigo/main"
+local url = script_details.debug and "https://raw.githubusercontent.com/3xq/indigo/main/"
 
 local out = script_details.debug and function(T, ...)
     return warn("[indigo - debug]: "..T:format(...))
