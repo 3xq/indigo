@@ -1,4 +1,4 @@
-getgenv().esp = loadstring(game:HttpGet("https://raw.githubusercontent.com/zekgt/lua/main/phantom%20forces/libraries/ESP.lua"))()
+getgenv().esp = loadstring(game:HttpGet('https://raw.githubusercontent.com/3xq/indigo/main/libraries/esp.lua'))()
 
 getgenv().ghosts = game.Workspace.Players['Bright orange']
 getgenv().phantoms = game.Workspace.Players['Bright blue']
