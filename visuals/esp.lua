@@ -17,7 +17,7 @@ getgenv().ghosts_esp = esp:AddObjectListener(ghosts, {
   IsEnabled = "ghosts"
 })
 
-getgenv().phantoms_esp esp:AddObjectListener(phantoms, {
+getgenv().phantoms_esp = esp:AddObjectListener(phantoms, {
   Recursive = true,
   Type = "Model",
   CustomName = " ",
