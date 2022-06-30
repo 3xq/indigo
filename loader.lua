@@ -3,22 +3,18 @@ local script_details = {
     version = "1.0.0",
 }
 
-local url = script_details.debug and "https://raw.githubusercontent.com/3xq/indigo/main/"
-
-local out = script_details.debug and function(T, ...)
-    return warn("[indigo - debug]: "..T:format(...))
-end or function() end
+local url = "https://raw.githubusercontent.com/3xq/indigo/main"
 
 local function import(file)
-    out("importing file \"%s\"", file)
-    -- return task.spawn(function()
+    warn("[indigo - debug]: importing file " .. file)
+
     local x, a = pcall(function()
         return loadstring(game:HttpGet(url .. file))()
     end)
+    
     if not x then
         return warn('failed to import', file)
     end
-    -- end)
 end
 
 getgenv().import = import
