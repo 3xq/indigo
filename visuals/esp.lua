@@ -10,7 +10,7 @@ getgenv().ghosts_esp = esp:AddObjectListener(ghosts, {
   Recursive = true,
   Type = "Model",
   CustomName = " ",
-  Color = Color3.fromRGB(255, 165, 0),
+  Color = Color3.fromRGB(150, 84, 8),
       Validator = function(obj)
       return obj:FindFirstChild("Torso")
   end,
@@ -21,7 +21,7 @@ getgenv().phantoms_esp = esp:AddObjectListener(phantoms, {
   Recursive = true,
   Type = "Model",
   CustomName = " ",
-  Color = Color3.fromRGB(0, 0, 233),
+  Color = Color3.fromRGB(6, 57, 112),
       Validator = function(obj)
       return obj:FindFirstChild("Torso")
   end,
