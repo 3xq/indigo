@@ -131,5 +131,4 @@ do
     esp_sector:CreateToggle("distance", false, function(state)
         esp.Names = state
     end)
-
 end
