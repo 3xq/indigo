@@ -52,7 +52,7 @@ do
     local colorpicker = fieldofview_sector:CreateColorpicker("color", function(state)
         fov_circle.Color = state
     end)
-    colorpicker:UpdateColor( Color3.fromRGB(6, 57, 112) )
+    colorpicker:UpdateColor( Color3.fromRGB(255,255,255) )
     fieldofview_sector:CreateToggle("visible", false, function(state)
         fov_circle.Visible = state
     end)
@@ -107,7 +107,6 @@ do
         config.character.antiaim_stance = state
     end)
 end
-
 do
     local esp_sector = visuals_tab:CreateSection('esp')
 
@@ -131,4 +130,39 @@ do
     esp_sector:CreateToggle("distance", false, function(state)
         esp.Names = state
     end)
+
+    local chams_sector = visuals_tab:CreateSection('chams')
+    esp_sector:CreateToggle("enabled", false, function(state)
+        chams_enabled = true
+    end)
+    local Label1 = esp_sector:CreateLabel(" ")
+    esp_sector:CreateToggle("ghosts", false, function(state)
+        chams_enabled = true
+    end)
+    esp_sector:CreateToggle("phantoms", false, function(state)
+        chams_enabled = true
+    end)
+    local Label1 = esp_sector:CreateLabel(" ")
+    esp_sector:CreateSlider("outline transparency", 0, 1, .3, false, function(state)
+        for _,cham in ipairs(chams) do
+            cham.OutlineTransparency=state
+        end
+    end)
+    local colorpicker = esp_sector:CreateColorpicker("outline color", function(state)
+        for _,cham in ipairs(chams) do
+            cham.OutlineColor=state
+        end
+    end)
+    colorpicker:UpdateColor( Color3.fromRGB(200,200,200) )
+    esp_sector:CreateSlider("fill transparency", 0, 1, .3, false, function(state)
+        for _,cham in ipairs(chams) do
+            cham.OutlineTransparency=state
+        end
+    end)
+    local colorpicker = esp_sector:CreateColorpicker("fill color", function(state)
+        for _,cham in ipairs(chams) do
+            cham.OutlineColor=state
+        end
+    end)
+    colorpicker:UpdateColor( Color3.fromRGB(11, 78, 150) )
 end
