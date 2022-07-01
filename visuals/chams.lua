@@ -1,7 +1,7 @@
 getgenv().chams = {
     ['enabled'] = false,
     ['ghosts'] = {['enabled']=false,['objects']={}},
-    ['phantoms'] = {}
+    ['phantoms'] = {['enabled']=false,['objects']={}}
 }
 
 local function cham(model, color)
@@ -28,7 +28,7 @@ end
 
 getgenv().update_chams = function()
     for _, character in ipairs(characters) do
-        if character.Parent = 'Bright blue' then
+        if character.Parent == 'Bright blue' then
         cham(character, Color3.fromRGB(13, 105, 172))
         else
         cham(character, Color3.fromRGB(218, 133, 65))
