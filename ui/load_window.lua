@@ -133,36 +133,50 @@ do
 
     local chams_sector = visuals_tab:CreateSection('chams')
     esp_sector:CreateToggle("enabled", false, function(state)
-        chams_enabled = true
+        chams.enabled = state
+        if chams.ghosts.enabled and chams.enabled then
+            for _, cham in ipairs(chams.ghosts.objects) do
+                cham.Enabled = state
+            end
+        end
+        if chams.phantoms.enabled and chams.enabled then
+            for _, cham in ipairs(chams.phantoms.objects) do
+                cham.Enabled = state
+            end
+        end
     end)
     local Label1 = esp_sector:CreateLabel(" ")
     esp_sector:CreateToggle("ghosts", false, function(state)
-        chams_enabled = true
+        chams.ghosts.enabled=state
+        if chams.enabled then
+        for _, cham in ipairs(chams.ghosts.objects) do
+            cham.Enabled = state
+        end
+        end
     end)
     esp_sector:CreateToggle("phantoms", false, function(state)
-        chams_enabled = true
+        chams.phantoms.enabled=state
+        if chams.enabled then
+        for _, cham in ipairs(chams.phantoms.objects) do
+            cham.Enabled = state
+        end
+        end
     end)
     local Label1 = esp_sector:CreateLabel(" ")
     esp_sector:CreateSlider("outline transparency", 0, 1, .3, false, function(state)
-        for _,cham in ipairs(chams) do
+        for _,cham in ipairs(chams.ghosts.objects) do
+            cham.OutlineTransparency=state
+        end
+        for _,cham in ipairs(chams.phantoms.objects) do
             cham.OutlineTransparency=state
         end
     end)
-    local colorpicker = esp_sector:CreateColorpicker("outline color", function(state)
-        for _,cham in ipairs(chams) do
-            cham.OutlineColor=state
-        end
-    end)
-    colorpicker:UpdateColor( Color3.fromRGB(200,200,200) )
     esp_sector:CreateSlider("fill transparency", 0, 1, .3, false, function(state)
-        for _,cham in ipairs(chams) do
-            cham.OutlineTransparency=state
+        for _,cham in ipairs(chams.ghosts.objects) do
+            cham.FillTransparency=state
+        end
+        for _,cham in ipairs(chams.phantoms.objects) do
+            cham.FillTransparency=state
         end
     end)
-    local colorpicker = esp_sector:CreateColorpicker("fill color", function(state)
-        for _,cham in ipairs(chams) do
-            cham.OutlineColor=state
-        end
-    end)
-    colorpicker:UpdateColor( Color3.fromRGB(11, 78, 150) )
 end
