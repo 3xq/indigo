@@ -2,7 +2,7 @@ if not import then
     return
 end
 
-import('/indigo-cosmetics/debug-color.lua')
+-- import('/indigo-cosmetics/debug-color.lua')
 
 import('/important/weight.lua')
 import('/important/config.lua')
